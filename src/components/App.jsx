@@ -10,7 +10,11 @@ export class App extends Component {
   };
 
   handleFormSubmit = data => {
-    console.log(data);
+    const findedContact = this.state.contacts.find(contact =>
+      contact.name.toLowerCase() === data.name.toLowerCase())
+    if (findedContact) {
+      return alert(`${data.name} is already in contacts`)
+    }
     this.setState(prevState => ({
       contacts: [...prevState.contacts, data],
     }));
@@ -33,6 +37,7 @@ export class App extends Component {
     const visibleContacts = this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(filterNormalized)
     );
+
     return (
       <div>
         <h1>Phonebook</h1>

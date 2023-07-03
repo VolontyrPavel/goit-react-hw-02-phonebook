@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { nanoid } from 'nanoid'
 
@@ -61,3 +62,8 @@ export class ContactForm extends Component {
     );
   }
 }
+
+
+ContactForm.propType = {
+  handleFormSubmit: PropTypes.func.isRequired,
+};
